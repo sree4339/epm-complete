@@ -1,0 +1,9 @@
+ID,name,description,price,currency_code,stock,minStock,rating,supplier_ID,category_ID
+a1111111-1111-1111-1111-111111111111,Dell Laptop,14 inch business laptop,55000,INR,20,5,4.5,11111111-1111-1111-1111-111111111111,dddddddd-dddd-dddd-dddd-dddddddddddd
+a2222222-2222-2222-2222-222222222222,HP Laptop,15 inch office laptop,52000,INR,4,5,4.2,11111111-1111-1111-1111-111111111111,dddddddd-dddd-dddd-dddd-dddddddddddd
+a3333333-3333-3333-3333-333333333333,Wireless Mouse,USB wireless mouse,800,INR,50,10,4.3,33333333-3333-3333-3333-333333333333,eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee
+a4444444-4444-4444-4444-444444444444,Keyboard,Mechanical keyboard,2500,INR,8,10,4.1,33333333-3333-3333-3333-333333333333,eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee
+a5555555-5555-5555-5555-555555555555,Office Chair,Ergonomic office chair,7500,INR,15,5,4.4,22222222-2222-2222-2222-222222222222,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+a6666666-6666-6666-6666-666666666666,Printer,All in one printer,12000,INR,6,3,4.0,44444444-4444-4444-4444-444444444444,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+a7777777-7777-7777-7777-777777777777,Notebook,A4 ruled notebook,80,INR,100,20,4.6,22222222-2222-2222-2222-222222222222,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+a8888888-8888-8888-8888-888888888888,Monitor,24 inch LED monitor,9500,INR,3,5,4.5,44444444-4444-4444-4444-444444444444,cccccccc-cccc-cccc-cccc-cccccccccccc
