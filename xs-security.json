@@ -1,0 +1,79 @@
+{
+  "xsappname": "epm-complete",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Read",
+      "description": "Read PO data"
+    },
+    {
+      "name": "$XSAPPNAME.Create",
+      "description": "Create and edit Purchase Orders"
+    },
+    {
+      "name": "$XSAPPNAME.Approve",
+      "description": "Approve or reject Purchase Orders"
+    },
+    {
+      "name": "$XSAPPNAME.Delete",
+      "description": "Delete Purchase Orders"
+    },
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full administrative access"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Viewer",
+      "description": "Read-only access to PO data",
+      "scope-references": [
+        "$XSAPPNAME.Read"
+      ]
+    },
+    {
+      "name": "PurchaseManager",
+      "description": "Create and approve Purchase Orders",
+      "scope-references": [
+        "$XSAPPNAME.Read",
+        "$XSAPPNAME.Create",
+        "$XSAPPNAME.Approve"
+      ]
+    },
+    {
+      "name": "Administrator",
+      "description": "Full access including delete and admin",
+      "scope-references": [
+        "$XSAPPNAME.Read",
+        "$XSAPPNAME.Create",
+        "$XSAPPNAME.Approve",
+        "$XSAPPNAME.Delete",
+        "$XSAPPNAME.Admin"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "EPM_ViewerRC",
+      "description": "Role collection for PO viewers",
+      "role-template-references": [
+        "$XSAPPNAME.Viewer"
+      ]
+    },
+    {
+      "name": "EPM_ManagerRC",
+      "description": "Role collection for PO managers",
+      "role-template-references": [
+        "$XSAPPNAME.PurchaseManager"
+      ]
+    },
+    {
+      "name": "EPM_AdminRC",
+      "description": "Role collection for PO administrators",
+      "role-template-references": [
+        "$XSAPPNAME.Administrator"
+      ]
+    }
+  ]
+}
