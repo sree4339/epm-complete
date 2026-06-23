@@ -1,0 +1,38 @@
+{
+  "welcomeFile": "/purchase/webapp/index.html",
+  "authenticationMethod": "none",
+  "routes": [
+    {
+      "source": "^/purchasing/(.*)$",
+      "target": "/purchasing/$1",
+      "destination": "srv-api",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/odata/(.*)$",
+      "target": "/odata/$1",
+      "destination": "srv-api",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/(.*)$",
+      "target": "$1",
+      "localDir": "../",
+      "authenticationType": "none"
+    }
+  ]
+}

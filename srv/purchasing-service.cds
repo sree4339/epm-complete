@@ -57,4 +57,46 @@ service PurchasingService @(path: '/purchasing') {
     reason: String;
   }
 }
+
 annotate PurchasingService.PurchaseOrders with @odata.draft.enabled;
+
+// =====================================================================
+//  SECURITY  (kept in separate annotate blocks — required by your
+//  @sap/cds ^9 compiler; inline @requires/@restrict break the parser)
+// =====================================================================
+
+// Service-level: any logged-in user must be authenticated to reach it
+annotate PurchasingService with @(requires: 'authenticated-user');
+
+// Entity-level: scope-based CRUD + action grants
+//   Read     -> Viewer, PurchaseManager, Administrator
+//   Create   -> PurchaseManager, Administrator (CREATE + UPDATE)
+//   submit   -> PurchaseManager, Administrator
+//   approve  -> Approve scope (PurchaseManager, Administrator)
+//   reject   -> Approve scope
+//   receive  -> Approve scope
+//   Delete   -> Administrator only
+annotate PurchasingService.PurchaseOrders with @(restrict: [
+  { grant: 'READ',            to: 'Read' },
+  { grant: ['CREATE','UPDATE'], to: 'Create' },
+  { grant: 'submit',          to: 'Create' },
+  { grant: 'approve',         to: 'Approve' },
+  { grant: 'reject',          to: 'Approve' },
+  { grant: 'receive',         to: 'Approve' },
+  { grant: 'DELETE',          to: 'Delete' }
+]);
+
+annotate PurchasingService.PurchaseOrderItems with @(restrict: [
+  { grant: 'READ',              to: 'Read' },
+  { grant: ['CREATE','UPDATE','DELETE'], to: 'Create' }
+]);
+
+// Suppliers and Products are @readonly already; restrict reads to anyone
+// who can read PO data.
+annotate PurchasingService.Suppliers with @(restrict: [
+  { grant: 'READ', to: 'Read' }
+]);
+
+annotate PurchasingService.Products with @(restrict: [
+  { grant: 'READ', to: 'Read' }
+]);
