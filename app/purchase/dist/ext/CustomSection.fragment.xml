@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <VBox class="sapUiSmallMargin">
+    <Title text="Budget Utilization" level="H3"/>
+    <ProgressIndicator
+      percentValue="{= Math.min(${totalAmount} / 2000000 * 100, 100) }"
+      displayValue="{= ${totalAmount} + ' / 2,000,000' }"
+      state="{= ${totalAmount} > 2000000 ? 'Error' : ${totalAmount} > 1500000 ? 'Warning' : 'Success' }"
+      class="sapUiSmallMarginTop"/>
+    <Text text="{= ${totalAmount} > 2000000 ? 'Over budget — needs senior approval' : 'Within budget' }"
+      class="sapUiTinyMarginTop"/>
+    <Text text="Priority: {priority}  |  Status: {status}"
+      class="sapUiTinyMarginTop"/>
+  </VBox>
+</core:FragmentDefinition>

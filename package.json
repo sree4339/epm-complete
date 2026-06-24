@@ -2,6 +2,7 @@
   "name": "epm-complete",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/hana": "^2.8",
     "@sap/cds": "^9",
     "@sap/xssec": "^4"
   },
@@ -20,6 +21,10 @@
         "kind": "sqlite",
         "credentials": {
           "database": "db/epm.db"
+        },
+        "[production]": {
+          "kind": "hana",
+          "deploy-format": "hdbtable"
         }
       },
       "auth": {
@@ -27,40 +32,18 @@
         "[development]": {
           "kind": "mocked",
           "users": {
-            "viewer@test.com": {
-              "password": "pass",
-              "roles": [
-                "Read"
-              ]
-            },
-            "manager@test.com": {
-              "password": "pass",
-              "roles": [
-                "Read",
-                "Create",
-                "Approve"
-              ]
-            },
-            "admin@test.com": {
-              "password": "pass",
-              "roles": [
-                "Read",
-                "Create",
-                "Approve",
-                "Delete",
-                "Admin"
-              ]
-            }
+            "viewer@test.com": { "password": "pass", "roles": [ "Read" ] },
+            "manager@test.com": { "password": "pass", "roles": [ "Read", "Create", "Approve" ] },
+            "admin@test.com": { "password": "pass", "roles": [ "Read", "Create", "Approve", "Delete", "Admin" ] }
           }
+        },
+        "[production]": {
+          "kind": "dummy"
         }
       }
     }
   },
   "private": true,
-  "workspaces": [
-    "app/*"
-  ],
-  "sapux": [
-    "app/purchase"
-  ]
+  "workspaces": [ "app/*" ],
+  "sapux": [ "app/purchase" ]
 }
